@@ -1,0 +1,56 @@
+﻿@model IEnumerable<final_project.Models.RL>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RLid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RLType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.details)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RLid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RLType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.details)
+            </td>
+            <td>
+                @Html.ActionLink("Comments", "Comments", new { RLId = item.RLid  }) |
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

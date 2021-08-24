@@ -22,11 +22,12 @@ namespace final_project.Models.Repository
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@fname", employee.First_name);
-                    cmd.Parameters.AddWithValue("@lname", employee.First_name);
+                    cmd.Parameters.AddWithValue("@lname", employee.Last_name);
                     cmd.Parameters.AddWithValue("@dob", employee.dob);
                     cmd.Parameters.AddWithValue("@email", employee.email);
                     cmd.Parameters.AddWithValue("@p_number", employee.PhoneNumber);
                     cmd.Parameters.AddWithValue("@DepId", employee.DepId);
+                    cmd.Parameters.AddWithValue("@_password", employee.password);
                     cnn.Open();
                     cmd.ExecuteNonQuery();
                     cnn.Close();

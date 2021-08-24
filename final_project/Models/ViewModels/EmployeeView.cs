@@ -20,5 +20,8 @@ namespace final_project.Models.ViewModels
 
         [Required]
         public int DepId { get; set; }
+
+        [Required]
+        public string password { get; set; }
     }
 }

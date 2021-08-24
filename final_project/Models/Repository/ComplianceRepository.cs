@@ -30,6 +30,7 @@ namespace final_project.Models.Repository
 
         public IEnumerable<Comments> MyComments(int EId,int RLId)
         {
+           // Console.WriteLine($"RLID= {}")
             List<Comments> ret = new List<Comments>();
             using (SqlConnection cnn = new SqlConnection("data source=(local);database=final_project; integrated security=SSPI"))
             {
@@ -96,6 +97,28 @@ namespace final_project.Models.Repository
                 }
             }
             return ret;
+        }
+
+        public bool Validate(int EId, string password)
+        {
+            int value= 0;
+            using (SqlConnection cnn = new SqlConnection("data source=(local);database=final_project; integrated security=SSPI"))
+            {
+                using (SqlCommand cmd = new SqlCommand("Validate", cnn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Eid", EId);
+                    cmd.Parameters.AddWithValue("@password", password);
+       
+                    cnn.Open();
+                    value=(int)cmd.ExecuteScalar();
+                   
+                }
+
+            }
+            if (value == 1) return true;
+
+            return false;
         }
     }
 }

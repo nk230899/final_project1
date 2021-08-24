@@ -1,4 +1,4 @@
-﻿@model IEnumerable<final_project.Models.RL>
+﻿@model final_project.Models.ViewModels.EmployeeLogin
 
 @{
     ViewData["Title"] = "Index";
@@ -6,53 +6,31 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RLid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RLType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DepId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.details)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RLid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RLType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.details)
-            </td>
-            <td>
-                @Html.ActionLink("Comments", "Comments", new {  id=item.RLid  }) |
-               
-            </td>
-        </tr>
+<h4>EmployeeLogin</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EId" class="control-label"></label>
+                <input asp-for="EId" class="form-control" />
+                <span asp-validation-for="EId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-    </tbody>
-</table>

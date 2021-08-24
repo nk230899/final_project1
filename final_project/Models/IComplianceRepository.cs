@@ -11,6 +11,8 @@ namespace final_project.Models
         public IEnumerable<RL> MyRLs(int EId);
 
         public void AddComment(string comm, int EId, int RLId);
+
+        public bool Validate(int EId, string password);
         
     }
 }

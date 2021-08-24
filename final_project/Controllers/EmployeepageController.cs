@@ -78,7 +78,7 @@ namespace final_project.Controllers
             }
         }
 
-        [HttpPost]
+        //[HttpPost]
         public ActionResult Delete(int id)
         {
             _employeeRepository.DeleteEmployee(id);

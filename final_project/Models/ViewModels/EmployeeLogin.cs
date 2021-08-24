@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace final_project.Models.ViewModels
 {
-    public class CommentView
+    public class EmployeeLogin
     {
-        public string Cmnt { get; set; }
-        public int RLId { get; set; }
+        public int EId { get; set; }
+        public string password { get; set; }
     }
 }
