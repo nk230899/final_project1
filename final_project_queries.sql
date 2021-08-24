@@ -1,3 +1,4 @@
+
 /*create database final_project;
 
 use final_project;
@@ -135,10 +136,65 @@ create table Comments(
  insert into Comments(EId,RLId,comment,C_date)
  values(@EId,@RLId,@comment,@C_date)
  go
+  
+ AddComment @EId=1002,@RLId=2,@comment="new ", @C_date="2018-08-08";
  */
- AddComment @EId=1002,@RLId=1,@comment="new comment", @C_date="2018-08-08";
-
-exec GetMyRLs @EId=1002;
+/*exec GetMyRLs @EId=1002;
 exec GetAllComments @EId=1002,@RLId=1; 
-/*exec GetAllDepartments
-exec GetAllRLs*/
+exec GetAllDepartments
+exec GetAllRLs
+drop procedure AddEmployee;
+go
+
+
+alter table Employees
+drop column password;
+
+alter table Employees 
+add _password varchar(30);
+select * from Comments;
+exec GetAllComments @EId=1002,@RLId=1;
+go
+
+drop table Employees;
+go
+
+create table Employees(
+	EId int identity(1000,1) primary key,
+	f_name varchar(20) not null,
+	l_name varchar(20) not null,
+	dob date not null,
+	email varchar(30),
+	p_number varchar(10),
+	DepId int not null foreign key references Departments(DepId),
+	password_ varchar(30) not null
+	);
+select * from Employees;
+go
+*/
+use final_project;
+
+go
+
+/*
+create procedure AddEmployee @fname varchar(20), @lname varchar(20), @dob date, @email varchar(30), @p_number varchar(10), @DepId int, @_password varchar(30)
+as
+insert into Employees(f_name,l_name,dob,email,p_number,DepId,password_)
+values(@fname,@lname,@dob,@email,@p_number,@DepId,@_password)
+go
+
+
+exec AddEmployee @fname="Nikhil",@lname="kumar",@dob="2018-08-08",@email="a",@p_number="678",@DepId=1,@_password="12345";
+
+select * from Departments;
+go
+create procedure Validate @Eid int,@password varchar(30)
+as 
+select count(EId)
+from Employees
+where EId=@Eid and password_=@password
+
+exec Validate @Eid=1001, @password="12345";
+*/
+select * from Employees;
+
